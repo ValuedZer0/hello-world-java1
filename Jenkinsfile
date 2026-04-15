@@ -1,10 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Java Check') {
+        stage('Verify Java') {
     steps {
-        bat 'java -version'
+        bat '''
+        java -version
+        echo JAVA_HOME=%JAVA_HOME%
+        where java
+        '''
     }
+}
 }
         stage('Checkout') {
             steps {
