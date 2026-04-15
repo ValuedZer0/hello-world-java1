@@ -9,7 +9,7 @@ pipeline {
         where java
         '''
     }
-}
+
 }
         stage('Checkout') {
             steps {
