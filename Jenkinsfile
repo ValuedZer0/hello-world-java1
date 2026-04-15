@@ -1,16 +1,21 @@
 pipeline {
     agent any
     stages {
+        stage('Java Check') {
+    steps {
+        bat 'java -version'
+    }
+}
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/nawaf83/hello-world-java1.git'
+                git branch: 'master', url: 'https://github.com/ValuedZer0/hello-world-java1.git'
             }
         }
         stage('Build') {
-            steps { bat 'gradlew clean build'}
+            steps { bat 'gradle clean build'}
         }
         stage('Test') {
-            steps { bat 'gradlew test'}
+            steps { bat 'gradle test'}
         }
         stage('Deploy') {
             steps { powershell 'java -jar build/libs/hello-world-java-V1.0.jar'}           
